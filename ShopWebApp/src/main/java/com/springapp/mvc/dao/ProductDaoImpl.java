@@ -45,7 +45,7 @@ public class ProductDaoImpl implements ProductDao {
     public Product getProductById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Product product = (Product) session.load(Product.class, new Integer(id));
-        logger.info("Domain loaded" + product);
+        logger.info("Product loaded" + product);
 
         return product;
     }

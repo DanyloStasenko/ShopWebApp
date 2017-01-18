@@ -11,4 +11,5 @@ public interface ProductDao {
     public void removeProduct(int id);
     public Product getProductById(int id);
     public List<Product> getProductsList();
+
 }

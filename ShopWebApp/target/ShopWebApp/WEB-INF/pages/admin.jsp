@@ -143,5 +143,26 @@
         <h2>Welcome : ${pageContext.request.userPrincipal.name}
             | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a></h2>
     </c:if>
+
+
+    <h1>Users List</h1>
+
+    <c:if test="${!empty users}">
+        <table class="tg">
+            <tr>
+                <th width="120">Username</th>
+                <th width="120">Password</th>
+                <th width="120">Role</th>
+            </tr>
+            <c:forEach items="${users}" var="user">
+                <tr>
+                    <td>${user.username}</td>
+                    <td>${user.password}</td>
+                    <td>${user.role}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+
 </body>
 </html>

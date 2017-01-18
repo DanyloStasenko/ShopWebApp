@@ -2,6 +2,7 @@ package com.springapp.mvc.controller;
 
 import com.springapp.mvc.model.Product;
 import com.springapp.mvc.service.ProductService;
+import com.springapp.mvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,11 +18,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ProductController {
 
     private ProductService productService;
+    private UserService userService;
 
     @Autowired(required = true)
     @Qualifier(value = "productService")
     public void setProductService(ProductService productService){
         this.productService = productService;
+    }
+
+    @Autowired(required = true)
+    @Qualifier(value = "userService")
+    public void setUserService(UserService userService){
+        this.userService = userService;
     }
 
     @RequestMapping(value = "products", method = RequestMethod.GET)
@@ -80,20 +88,26 @@ public class ProductController {
     public String admin(Model model)
     {
         model.addAttribute("product", new Product());
-        //model.addAttribute("listDomains", this.domainService.listDomains());
         model.addAttribute("products", this.productService.getProductsList());
+        model.addAttribute("users", this.userService.getUsersList());
+
         return "admin";
     }
 
     @RequestMapping(value = "user", method = RequestMethod.GET)
     public String user(Model model)
     {
-        //model.addAttribute("domain", new Domain());
-        //model.addAttribute("listDomains", this.domainService.listDomains());
+        model.addAttribute("products", this.productService.getProductsList());
 
         return "user";
     }
 
+    @RequestMapping("/buyproduct/{id}")
+    public String buyProduct(@PathVariable("id") int id)
+    {
+        Product product = this.productService.getProductById(id);
 
+        return "redirect:/user";
+    }
 
 }

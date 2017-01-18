@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Domain Manager</title>
+    <title>WebShop</title>
 </head>
 
 <body>
