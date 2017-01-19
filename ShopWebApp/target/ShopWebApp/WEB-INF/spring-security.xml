@@ -8,17 +8,9 @@
 
     <http auto-config="true">
         <intercept-url pattern="/admin**" access="ROLE_ADMIN" />
-        <intercept-url pattern="/user**" access="ROLE_USER" />
+        <intercept-url pattern="/user**" access="ROLE_USER, ROLE_ADMIN" />
+        <intercept-url pattern="/buyproduct**" access="ROLE_USER, ROLE_ADMIN" />
     </http>
-
-   <!-- <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="user" password="user" authorities="ROLE_USER" />
-                <user name="admin" password="admin" authorities="ROLE_ADMIN, ROLE_USER" />
-            </user-service>
-        </authentication-provider>
-   </authentication-manager>-->
 
     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -37,30 +29,5 @@
                 />
      </authentication-provider>
     </authentication-manager>
-
-
-    <!--<authentication-manager id="jdbc-auth">
-        <authentication-provider>
-            <jdbc-user-service data-source-ref="dataSource3"
-                               users-by-username-query="select username from Users"
-                               authorities-by-username-query="select role from Users" />
-        </authentication-provider>
-    </authentication-manager>
-
-
-    <beans:bean id="dbDataSource"
-                class="org.springframework.jndi.JndiObjectFactoryBean">
-        <beans:property name="jndiName" value="java:comp/env/jdbc/MyLocalDB" />
-    </beans:bean>
-
-    <beans:bean id="dataSource3"
-                class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-
-        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <beans:property name="url" value="jdbc:mysql://localhost:3306/products" />
-        <beans:property name="username" value="root" />
-        <beans:property name="password" value="root" />
-    </beans:bean>-->
-
 
 </beans:beans>

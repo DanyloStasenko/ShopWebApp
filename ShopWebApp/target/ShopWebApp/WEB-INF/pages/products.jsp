@@ -55,6 +55,7 @@
                     <th width="120">Title</th>
                     <th width="120">Description</th>
                     <th width="120">Price</th>
+                    <th width="120">Buy</th>
                 </tr>
                 <c:forEach items="${products}" var="product">
                     <tr>
@@ -62,6 +63,7 @@
                         <td><a href="/productdata/${product.id}" target="_blank">${product.title}</a></td>
                         <td>${product.description}</td>
                         <td>${product.price}</td>
+                        <td><a href="<c:url value='/buyproduct/${product.id}'/>">Buy</a></td>
                     </tr>
                 </c:forEach>
             </table>

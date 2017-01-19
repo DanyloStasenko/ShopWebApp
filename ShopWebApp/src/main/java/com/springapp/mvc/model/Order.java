@@ -11,14 +11,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "price")
-    private int price;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "description")
-    private String description;
+    @Column(name = "product_id")
+    private int productId;
 
     public int getId() {
         return id;
@@ -28,27 +25,19 @@ public class Order {
         this.id = id;
     }
 
-    public int getPrice() {
-        return price;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getTitle() {
-        return title;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 }

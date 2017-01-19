@@ -139,11 +139,6 @@
         </table>
     </form:form>
 
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <h2>Welcome : ${pageContext.request.userPrincipal.name}
-            | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a></h2>
-    </c:if>
-
 
     <h1>Users List</h1>
 
@@ -162,6 +157,30 @@
                 </tr>
             </c:forEach>
         </table>
+    </c:if>
+
+    <h1>Orders List</h1>
+    <c:if test="${!empty orders}">
+        <table class="tg">
+            <tr>
+                <th width="80">ID</th>
+                <th width="120">User</th>
+                <th width="120">ProductId</th>
+            </tr>
+            <c:forEach items="${orders}" var="order">
+                <tr>
+                    <td>${order.id}</td>
+                    <td>${order.username}</td>
+                    <td>${order.productId}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+
+
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <h2>Welcome : ${pageContext.request.userPrincipal.name}
+            | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a></h2>
     </c:if>
 
 </body>

@@ -34,6 +34,7 @@
             <list>
                 <value>com.springapp.mvc.model.Product</value>
                 <value>com.springapp.mvc.model.User</value>
+                <value>com.springapp.mvc.model.Order</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -44,24 +45,33 @@
         </property>
     </bean>
 
-    <!--ProductDao and ProductService beans-->
-    <bean id="productDao" class="com.springapp.mvc.dao.ProductDaoImpl">
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
-    <bean id="productService" class="com.springapp.mvc.service.ProductServiceImpl">
+
+    <!--ProductDao and ProductService beans-->
+    <bean id="productDao" class="com.springapp.mvc.dao.ProductDao">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="productService" class="com.springapp.mvc.service.ProductService">
         <property name="productDao" ref="productDao"/>
     </bean>
 
     <!--UserDao and UserService beans-->
-    <bean id="userDao" class="com.springapp.mvc.dao.UserDaoImpl">
+    <bean id="userDao" class="com.springapp.mvc.dao.UserDao">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
-    <bean id="userService" class="com.springapp.mvc.service.UserServiceImpl">
+    <bean id="userService" class="com.springapp.mvc.service.UserService">
         <property name="userDao" ref="userDao"/>
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <!--OrderDao and OrderService beans-->
+    <bean id="orderDao" class="com.springapp.mvc.dao.OrderDao">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
+    <bean id="orderService" class="com.springapp.mvc.service.OrderService">
+        <property name="orderDao" ref="orderDao"/>
+    </bean>
+
 
 </beans>

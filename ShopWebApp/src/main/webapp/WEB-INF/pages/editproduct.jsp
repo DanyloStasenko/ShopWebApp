@@ -95,7 +95,6 @@
                     <c:if test="${!empty product.title}">
                         <input type="submit"
                                value="<spring:message text="Edit Product"/>"/>
-
                     </c:if>
 
                 </td>

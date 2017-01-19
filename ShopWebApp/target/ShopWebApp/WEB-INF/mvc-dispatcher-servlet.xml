@@ -3,7 +3,6 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation=
                "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
@@ -35,6 +34,7 @@
             <list>
                 <value>com.springapp.mvc.model.Product</value>
                 <value>com.springapp.mvc.model.User</value>
+                <value>com.springapp.mvc.model.Order</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -45,36 +45,33 @@
         </property>
     </bean>
 
-    <!--ProductDao and ProductService beans-->
-    <bean id="productDao" class="com.springapp.mvc.dao.ProductDaoImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="productService" class="com.springapp.mvc.service.ProductServiceImpl">
-        <property name="productDao" ref="productDao"/>
-    </bean>
-
-    <!--UserDao and UserService beans-->
-    <bean id="userDao" class="com.springapp.mvc.dao.UserDaoImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="userService" class="com.springapp.mvc.service.UserServiceImpl">
-        <property name="userDao" ref="userDao"/>
-    </bean>
-
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
 
+    <!--ProductDao and ProductService beans-->
+    <bean id="productDao" class="com.springapp.mvc.dao.ProductDao">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="productService" class="com.springapp.mvc.service.ProductService">
+        <property name="productDao" ref="productDao"/>
+    </bean>
 
-    <!--<bean id="myDetailsService"
-          class="com.springapp.mvc.service.MyUserDetailsService" />
+    <!--UserDao and UserService beans-->
+    <bean id="userDao" class="com.springapp.mvc.dao.UserDao">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="userService" class="com.springapp.mvc.service.UserService">
+        <property name="userDao" ref="userDao"/>
+    </bean>
 
-    <security:authentication-manager>
-        <security:authentication-provider user-service-ref="myDetailsService" />
-    </security:authentication-manager>
--->
-
-
+    <!--OrderDao and OrderService beans-->
+    <bean id="orderDao" class="com.springapp.mvc.dao.OrderDao">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="orderService" class="com.springapp.mvc.service.OrderService">
+        <property name="orderDao" ref="orderDao"/>
+    </bean>
 
 
 </beans>
