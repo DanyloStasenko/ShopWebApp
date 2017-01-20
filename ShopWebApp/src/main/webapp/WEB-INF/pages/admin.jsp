@@ -41,12 +41,11 @@
         }
     </style>
 </head>
+
 <body>
-    <h1>Admin</h1>
-
-    <h1>Products List</h1>
-
+    <h1>Admin Page</h1>
     <c:if test="${!empty products}">
+        <h1>Products List</h1>
         <table class="tg">
             <tr>
                 <th width="80">ID</th>
@@ -55,7 +54,6 @@
                 <th width="120">Price</th>
                 <th width="60">Edit</th>
                 <th width="60">Delete</th>
-                    <%-- <th width="60">Order</th>--%>
             </tr>
             <c:forEach items="${products}" var="product">
                 <tr>
@@ -63,8 +61,8 @@
                     <td><a href="/productdata/${product.id}" target="_blank">${product.title}</a></td>
                     <td>${product.description}</td>
                     <td>${product.price}</td>
-                    <td><a href="/editproduct/${product.id}" target="_blank">Edit</a></td>
-                    <td><a href="<c:url value='/remove/${product.id}'/>">Delete</a></td>
+                    <td><a href="/admin/editproduct/${product.id}" target="_blank">Edit</a></td>
+                    <td><a href="<c:url value='/admin/remove/${product.id}'/>">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -87,7 +85,6 @@
                     </td>
                 </tr>
             </c:if>
-
             <tr>
                 <td>
                     <form:label path="title">
@@ -98,7 +95,6 @@
                     <form:input path="title"/>
                 </td>
             </tr>
-
             <tr>
                 <td>
                     <form:label path="description">
@@ -109,7 +105,6 @@
                     <form:input path="description"/>
                 </td>
             </tr>
-
             <tr>
                 <td>
                     <form:label path="price">
@@ -120,10 +115,8 @@
                     <form:input path="price"/>
                 </td>
             </tr>
-
             <tr>
                 <td colspan="2">
-
                     <c:if test="${!empty product.title}">
                         <input type="submit"
                                value="<spring:message text="Edit Product"/>"/>
@@ -133,34 +126,96 @@
                         <input type="submit"
                                value="<spring:message text="Add Product"/>"/>
                     </c:if>
-
                 </td>
             </tr>
         </table>
     </form:form>
 
-
-    <h1>Users List</h1>
-
     <c:if test="${!empty users}">
+        <h1>Users List</h1>
         <table class="tg">
             <tr>
                 <th width="120">Username</th>
                 <th width="120">Password</th>
                 <th width="120">Role</th>
+                <th width="120">Delete</th>
             </tr>
             <c:forEach items="${users}" var="user">
                 <tr>
                     <td>${user.username}</td>
                     <td>${user.password}</td>
                     <td>${user.role}</td>
+                    <td><a href="/admin/removeuser/${user.username}" target="_blank">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
     </c:if>
 
-    <h1>Orders List</h1>
+    <h1>Add a User</h1>
+    <c:url var="addAction" value="/admin/adduser"/>
+    <form:form action="${addAction}" commandName="user">
+        <table>
+            <c:if test="${!empty user.username}">
+                <tr>
+                    <td>
+                        <form:label path="id">
+                            <spring:message text="Username"/>
+                        </form:label>
+                    </td>
+                    <td>
+                        <form:input path="id" readonly="true" size="8" disabled="true"/>
+                        <form:hidden path="id"/>
+                    </td>
+                </tr>
+            </c:if>
+            <tr>
+                <td>
+                    <form:label path="username">
+                        <spring:message text="Username"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="username"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form:label path="password">
+                        <spring:message text="Password"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="password"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form:label path="role">
+                        <spring:message text="Role"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="role"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <c:if test="${!empty user.username}">
+                        <input type="submit"
+                               value="<spring:message text="Edit User"/>"/>
+                    </c:if>
+
+                    <c:if test="${empty user.username}">
+                        <input type="submit"
+                               value="<spring:message text="Add User"/>"/>
+                    </c:if>
+                </td>
+            </tr>
+        </table>
+    </form:form>
+
     <c:if test="${!empty orders}">
+        <h1>Orders List</h1>
         <table class="tg">
             <tr>
                 <th width="80">ID</th>
@@ -177,10 +232,9 @@
         </table>
     </c:if>
 
-
     <c:if test="${pageContext.request.userPrincipal.name != null}">
         <h2>Welcome : ${pageContext.request.userPrincipal.name}
-            | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a></h2>
+            | <a href="<c:url value="/j_spring_security_logout"/>">Logout</a></h2>
     </c:if>
 
 </body>

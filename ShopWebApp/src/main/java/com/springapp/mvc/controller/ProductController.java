@@ -2,6 +2,7 @@ package com.springapp.mvc.controller;
 
 import com.springapp.mvc.model.Order;
 import com.springapp.mvc.model.Product;
+import com.springapp.mvc.model.User;
 import com.springapp.mvc.service.IOrderService;
 import com.springapp.mvc.service.IProductService;
 import com.springapp.mvc.service.IUserService;
@@ -66,7 +67,7 @@ public class ProductController {
         return "redirect:/admin";
     }
 
-    @RequestMapping("/remove/{id}")
+    @RequestMapping("/admin/remove/{id}")
     public String removeProduct(@PathVariable("id") int id)
     {
         this.productService.removeProduct(id);
@@ -74,11 +75,11 @@ public class ProductController {
         return "redirect:/admin";
     }
 
-    @RequestMapping("editproduct/{id}")
+    @RequestMapping("/admin/editproduct/{id}")
     public String editProduct(@PathVariable("id") int id, Model model)
     {
         model.addAttribute("product", this.productService.getProductById(id));
-        model.addAttribute("listProducts", this.productService.getProductsList());
+        //model.addAttribute("listProducts", this.productService.getProductsList());
 
         return "editproduct";
     }
@@ -97,6 +98,7 @@ public class ProductController {
         model.addAttribute("product", new Product());
         model.addAttribute("products", this.productService.getProductsList());
         model.addAttribute("users", this.userService.getUsersList());
+        model.addAttribute("user", new User());
 
         model.addAttribute("orders", this.orderService.getOrdersList());
 
@@ -107,12 +109,13 @@ public class ProductController {
     public String user(Model model)
     {
         model.addAttribute("products", this.productService.getProductsList());
+        //pageContext.request.userPrincipal.name;
 
         return "user";
     }
 
 
-    @RequestMapping("/buyproduct/{id}/{name}")
+    @RequestMapping(value = "/user/buyproduct/{id}/{name}", method = RequestMethod.GET)
     public String buyProduct(@PathVariable("id") int id, @PathVariable("name") String name)
     {
         Order order = new Order();
@@ -123,6 +126,26 @@ public class ProductController {
         //Product product = this.productService.getProductById(id);
 
         return "redirect:/user";
+    }
+
+
+    @RequestMapping(value = "/admin/adduser", method = RequestMethod.POST)
+    public String addUser(@ModelAttribute("user") User user)
+    {
+        if(user.getUsername().isEmpty()){
+            user.setUsername("default");
+        }
+        this.userService.addUser(user);
+
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/admin/removeuser/{username}", method = RequestMethod.GET)
+    public String removeUser(@PathVariable("username") String username)
+    {
+        userService.removeUser(username);
+
+        return "redirect:/admin";
     }
 
 }

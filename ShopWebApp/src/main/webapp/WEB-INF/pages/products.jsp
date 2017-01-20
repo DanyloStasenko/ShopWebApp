@@ -8,6 +8,14 @@
     <head>
         <title>Products Page</title>
 
+        <c:if test="${pageContext.request.userPrincipal.name == null}">
+            <a href="<c:url value="/user"/>">Login</a>
+        </c:if>
+
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <a href="<c:url value="/j_spring_security_logout"/>"> Logout</a>
+        </c:if>
+
         <style type="text/css">
             .tg {
                 border-collapse: collapse;
@@ -41,14 +49,16 @@
                 color: #333;
                 background-color: #f0f0f0;
             }
-
         </style>
     </head>
 
     <body>
-        <h1>Products List</h1>
+        <c:if test="${empty products}">
+            <h1>Products List is empty...</h1>
+        </c:if>
 
         <c:if test="${!empty products}">
+        <h1>Products List:</h1>
             <table class="tg">
                 <tr>
                     <th width="80">ID</th>
@@ -63,11 +73,15 @@
                         <td><a href="/productdata/${product.id}" target="_blank">${product.title}</a></td>
                         <td>${product.description}</td>
                         <td>${product.price}</td>
-                        <td><a href="<c:url value='/buyproduct/${product.id}'/>">Buy</a></td>
+                        <c:if test="${pageContext.request.userPrincipal.name == null}">
+                            <td><a href="<c:url value="/user"/>">Buy</a></td>
+                        </c:if>
+                        <c:if test="${pageContext.request.userPrincipal.name != null}">
+                            <td><a href="<c:url value='/user/buyproduct/${product.id}/${pageContext.request.userPrincipal.name}'/>">Buy</a></td>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </table>
         </c:if>
-
     </body>
 </html>

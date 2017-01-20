@@ -8,8 +8,7 @@
     <title>Edit Product</title>
     <style type="text/css">
 
-        .tg td
-        {
+        .tg td{
             font-family: Arial, sans-serif;
             font-size: 14px;
             padding: 10px 5px;
@@ -21,8 +20,7 @@
             color: #333;
             background-color: #fff;
         }
-        .tg th
-        {
+        .tg th{
             font-family: Arial, sans-serif;
             font-size: 14px;
             font-weight: normal;
@@ -91,12 +89,10 @@
 
             <tr>
                 <td colspan="2">
-
                     <c:if test="${!empty product.title}">
                         <input type="submit"
                                value="<spring:message text="Edit Product"/>"/>
                     </c:if>
-
                 </td>
             </tr>
         </table>
