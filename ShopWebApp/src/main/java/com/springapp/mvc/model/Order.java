@@ -14,8 +14,8 @@ public class Order {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "product_id")
-    private int productId;
+    @Column(name = "product_title")
+    private String productTitle;
 
     public int getId() {
         return id;
@@ -33,11 +33,11 @@ public class Order {
         this.username = username;
     }
 
-    public int getProductId() {
-        return productId;
+    public String getProductTitle() {
+        return productTitle;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setProductTitle(String productTitle) {
+        this.productTitle = productTitle;
     }
 }
