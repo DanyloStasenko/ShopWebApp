@@ -6,10 +6,9 @@
 
 <html>
     <head>
-        <title>Products Page</title>
+        <title>Products</title>
         <link href="css/style.css" type="text/css" rel="stylesheet" />
     </head>
-
     <body>
         <div class="center">
             <c:if test="${pageContext.request.userPrincipal.name == null}">
@@ -34,7 +33,7 @@
                     <c:forEach items="${products}" var="product">
                         <tr>
                             <td>${product.id}</td>
-                            <td><a href="/productdata/${product.id}" target="_blank">${product.title}</a></td>
+                            <td><a href="/productdata/${product.id}" >${product.title}</a></td>
                             <td>${product.description}</td>
                             <td>${product.price}</td>
                             <c:if test="${pageContext.request.userPrincipal.name == null}">

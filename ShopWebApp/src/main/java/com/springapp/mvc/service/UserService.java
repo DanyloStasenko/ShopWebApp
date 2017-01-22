@@ -1,6 +1,7 @@
 package com.springapp.mvc.service;
 
 import com.springapp.mvc.dao.IUserDao;
+import com.springapp.mvc.model.Order;
 import com.springapp.mvc.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,4 +45,5 @@ public class UserService implements IUserService {
     public List<User> getUsersList() {
         return this.userDao.getUsersList();
     }
+
 }

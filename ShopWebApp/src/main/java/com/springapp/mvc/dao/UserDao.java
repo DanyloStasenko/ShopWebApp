@@ -5,14 +5,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository(value="userDatabaseDao")
 public class UserDao implements IUserDao {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductDao.class);
+
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -49,7 +48,6 @@ public class UserDao implements IUserDao {
         Session session = this.sessionFactory.getCurrentSession();
         User user = (User) session.load(User.class, new String(username));
         logger.info("User loaded" + user);
-
         return user;
     }
 
@@ -57,11 +55,11 @@ public class UserDao implements IUserDao {
     public List<User> getUsersList() {
         Session session = this.sessionFactory.getCurrentSession();
         List<User> users = session.createQuery("from User").list();
+
         for(User user : users)
         {
             logger.info("Users list: " + user);
         }
-
         return users;
     }
 }

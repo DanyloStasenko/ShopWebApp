@@ -36,7 +36,7 @@ public class OrderService implements IOrderService {
     @Override
     @Transactional
     public Order getOrderById(int id) {
-        return null;
+        return orderDao.getOrderById(id);
     }
 
     @Override

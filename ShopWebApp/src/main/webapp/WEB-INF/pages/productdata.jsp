@@ -5,8 +5,8 @@
 
 <html>
     <head>
-        <title>productData</title>
-        <link href="css/style.css" type="text/css" rel="stylesheet" />
+        <title>Product Data</title>
+        <link href="/css/style.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <div class="center">

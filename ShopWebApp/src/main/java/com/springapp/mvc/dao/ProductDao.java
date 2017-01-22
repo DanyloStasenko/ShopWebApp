@@ -10,6 +10,7 @@ import java.util.List;
 public class ProductDao implements IProductDao {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductDao.class);
+
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -46,7 +47,6 @@ public class ProductDao implements IProductDao {
         Session session = this.sessionFactory.getCurrentSession();
         Product product = (Product) session.load(Product.class, new Integer(id));
         logger.info("Product loaded" + product);
-
         return product;
     }
 
@@ -59,7 +59,6 @@ public class ProductDao implements IProductDao {
         {
             logger.info("Product list: " + product);
         }
-
         return products;
     }
 }

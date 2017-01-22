@@ -1,3 +1,114 @@
+@import url(reset.css);
+
+body {
+    background: url(../images/main_bg.png);
+    font: 14px/1.5 Arial, Verdana, sans-serif;
+    color: #353535;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+a {
+    color: #a03131;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.wrapper {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.header {
+    overflow: hidden;
+}
+
+
+.menu {
+    width: 960px;
+    height: 70px;
+    background: #282828;
+}
+
+.menu ul {
+    padding-left: 40px;
+    padding-top: 25px;
+    overflow: hidden;
+}
+
+.menu ul li {
+    float: left;
+    font: bold 18px Arial, Verdana, sans-serif;
+    color: #ffffff;
+    margin-right: 70px;
+}
+
+.menu ul li a {
+    color: #ffffff;
+    display: block;
+    line-height: 1;
+}
+
+.menu ul li a:hover, .menu .current {
+    text-decoration: none;
+    border-bottom: 2px solid #ffffff;
+}
+
+.menu ul li span {
+    color: #ff1600;
+}
+
+.divider {
+    width: 552px;
+    height: 36px;
+    background: url(../images/divider.png) no-repeat;
+    margin: 3px auto 27px auto;
+    opacity: 0.5;
+}
+
+.content {
+     width: 960px;
+     margin: 0 auto;
+     background: #f7f3eb;
+ }
+
+
+.red-headline {
+    font-size: 30px;
+    font-weight: bold;
+    color: #a03131;
+    margin-top: 28px;
+}
+
+.footer {
+    padding-top: 10px;
+    padding-bottom: 17px;
+    background: #282828;
+}
+
+.footer p {
+    color: #ffffff;
+}
+
+
+.menu .rightblock {
+    float: right;
+    margin-right: 30px;
+    line-height: 1;
+}
 
 .tg {
     border-collapse: collapse;
@@ -38,17 +149,34 @@
 .right {
     width: 280px;
     padding: 5px;
+    padding-top: 60px;
     padding-right: 20px;
     float: left;
 }
-.items {
-    width: 1000px;
-    padding: 5px;
-    padding-right: 20px;
+
+
+.transparent{
+    opacity: 0.7;
 }
 
 .center {
+     margin: auto;
+     width: 50%;
+     padding: 10px;
+ }
+
+.table {
+    padding-left: 40px;
+    padding-bottom: 40px;
+}
+
+.items {
     margin: auto;
-    width: 1000px;
+    /*width: 960px;*/
+    padding: 10px;
+}
+
+.central{
+    margin: auto;
     padding: 10px;
 }
