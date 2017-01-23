@@ -5,7 +5,9 @@ body {
     font: 14px/1.5 Arial, Verdana, sans-serif;
     color: #353535;
     text-align: center;
+
 }
+
 
 h1 {
     font-size: 28px;
@@ -93,11 +95,7 @@ a:hover {
     margin-top: 28px;
 }
 
-.footer {
-    padding-top: 10px;
-    padding-bottom: 17px;
-    background: #282828;
-}
+
 
 .footer p {
     color: #ffffff;
@@ -154,15 +152,16 @@ a:hover {
     float: left;
 }
 
-
 .transparent{
     opacity: 0.7;
 }
 
 .center {
-     margin: auto;
-     width: 50%;
-     padding: 10px;
+    margin: 0 auto;
+    width: 960px;
+    padding: 10px;
+    background: #fff;
+    min-height: 1000px;
  }
 
 .table {

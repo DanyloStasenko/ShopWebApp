@@ -36,7 +36,7 @@ public class ShopController {
     }
 
     @RequestMapping("productdata/{id}")
-    public String domainData(@PathVariable("id") int id, Model model){
+    public String productData(@PathVariable("id") int id, Model model){
         model.addAttribute("product", this.productService.getProductById(id));
         return "productdata";
     }
@@ -45,5 +45,11 @@ public class ShopController {
     public String index(Model model){
         model.addAttribute("users", this.userService.getUsersList());
         return "guide";
+    }
+
+    @RequestMapping("/register")
+    public String register(Model model){
+        model.addAttribute("users", this.userService.getUsersList());
+        return "register";
     }
 }
