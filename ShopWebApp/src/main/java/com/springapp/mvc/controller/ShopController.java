@@ -1,5 +1,6 @@
 package com.springapp.mvc.controller;
 
+import com.springapp.mvc.model.User;
 import com.springapp.mvc.service.IProductService;
 import com.springapp.mvc.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,9 @@ public class ShopController {
 
     @RequestMapping("/register")
     public String register(Model model){
+        model.addAttribute("user", new User());
         model.addAttribute("users", this.userService.getUsersList());
         return "register";
     }
+
 }

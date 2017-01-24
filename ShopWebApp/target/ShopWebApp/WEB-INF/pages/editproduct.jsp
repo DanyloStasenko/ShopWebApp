@@ -4,8 +4,9 @@
 <%@ page session="false" %>
 
 <html>
-<head>
+    <head>
     <title>Edit Product</title>
+    <link href="css/adminstyle.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
         .tg td {
             font-family: Arial, sans-serif;

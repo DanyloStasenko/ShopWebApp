@@ -1,4 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,7 +28,6 @@
     <div class="content">
         <div class="container">
             <br>
-            <h1>This Page is under development...</h1>
             <div class="divider"></div>
             <h2 class="red-headline">Please use these logins:</h2>
             <div class="center">
@@ -46,9 +48,42 @@
                     </table>
                 </c:if>
                 <br>
+                <h2 class="red-headline">Or register new user:</h2>
+                <c:url var="addAction" value="/register/add"/>
+                <form:form action="${addAction}" commandName="user">
+                    <table>
+                        <tr>
+                            <td>
+                                <form:label path="username">
+                                    <spring:message text="Username "/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="username"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form:label path="password">
+                                    <spring:message text="Password "/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="password"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <c:if test="${empty user.username}">
+                                    <input type="submit"
+                                           value="<spring:message text="Add User"/>"/>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </table>
+                    </form:form>
                 <br>
             </div>
-
         </div>
     </div>
 
@@ -61,4 +96,3 @@
 </div>
 </body>
 </html>
-

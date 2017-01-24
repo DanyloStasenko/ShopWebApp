@@ -2,12 +2,15 @@ package com.springapp.mvc.controller;
 
 import com.springapp.mvc.model.Order;
 import com.springapp.mvc.model.Product;
+import com.springapp.mvc.model.User;
 import com.springapp.mvc.service.IOrderService;
 import com.springapp.mvc.service.IProductService;
+import com.springapp.mvc.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +20,7 @@ public class UserController {
 
     private IProductService productService;
     private IOrderService orderService;
+    private IUserService userService;
 
     @Autowired(required = true)
     @Qualifier(value = "productService")
@@ -28,6 +32,12 @@ public class UserController {
     @Qualifier(value = "orderService")
     public void setOrderService(IOrderService orderService){
         this.orderService = orderService;
+    }
+
+    @Autowired(required = true)
+    @Qualifier(value = "userService")
+    public void setUserService(IUserService userService){
+        this.userService = userService;
     }
 
     @RequestMapping(value = "user", method = RequestMethod.GET)
@@ -55,5 +65,14 @@ public class UserController {
             orderService.removeOrder(id);
         }
         return "redirect:/user";
+    }
+
+    @RequestMapping(value = "/register/add", method = RequestMethod.POST)
+    public String registerUser(@ModelAttribute("user") User user){
+        if (!user.getUsername().isEmpty() && !user.getPassword().isEmpty()){
+            user.setRole("USER");
+            this.userService.addUser(user);
+        }
+        return "redirect:/guide";
     }
 }

@@ -39,7 +39,6 @@ public class AdminController {
         this.orderService = orderService;
     }
 
-
     @RequestMapping(value = "admin", method = RequestMethod.GET)
     public String admin(Model model){
         model.addAttribute("product", new Product());
