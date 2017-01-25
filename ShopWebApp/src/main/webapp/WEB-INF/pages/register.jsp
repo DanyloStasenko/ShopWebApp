@@ -16,10 +16,10 @@
     <div id="header">
         <div id="menu">
             <ul>
-                <li><a href="<c:url value="/guide"/>">Home</a></li>
+                <li><a href="<c:url value="/home"/>">Home</a></li>
                 <li><a href="<c:url value="/products"/>">Products</a></li>
                 <li><a href="<c:url value="/admin"/>">Admin Page</a></li>
-                <li class="rightblock"><a href="<c:url value="/user"/>">Login</a></li>
+                <li class="rightblock"><a href="<c:url value="/login"/>">Login</a></li>
                 <li class="rightblock"><a class="current" href="<c:url value="/register"/>">Register</a></li>
             </ul>
         </div>
@@ -49,7 +49,7 @@
                 </c:if>
                 <br>
                 <h2 class="red-headline">Or register new user:</h2>
-                <c:url var="addAction" value="/register/add"/>
+                <c:url var="addAction" value="/register/adduser"/>
                 <form:form action="${addAction}" commandName="user">
                     <table>
                         <tr>

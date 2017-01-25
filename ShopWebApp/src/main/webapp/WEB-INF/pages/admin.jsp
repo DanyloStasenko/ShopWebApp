@@ -17,11 +17,11 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li><a href="<c:url value="/guide"/>">Home</a></li>
+                        <li><a href="<c:url value="/home"/>">Home</a></li>
                         <li><a href="<c:url value="/products"/>">Products</a></li>
                         <li><a class="current" href="<c:url value="/admin"/>">Admin Page</a></li>
                         <li class="rightblock"> <a href="<c:url value="/j_spring_security_logout"/>">Logout (${pageContext.request.userPrincipal.name})</a></li>
-                        <li class="rightblock"><a href="<c:url value="/user"/>">Go to Basket</a></li>
+                        <li class="rightblock"><a href="<c:url value="/basket"/>">Go to Basket</a></li>
                     </ul>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                                 <td><a href="/productdata/${product.id}" >${product.title}</a></td>
                                 <td>${product.description}</td>
                                 <td>${product.price}</td>
-                                <td><a href="/admin/editproduct/${product.id}" target="_blank">Edit</a></td>
+                                <td><a href="/admin/editproduct/${product.id}" >Edit</a></td>
                                 <td><a href="<c:url value='/admin/remove/${product.id}'/>">Delete</a></td>
                             </tr>
                         </c:forEach>
@@ -132,7 +132,7 @@
                                 <td>${user.username}</td>
                                 <td>${user.password}</td>
                                 <td>${user.role}</td>
-                                <td><a href="/admin/removeuser/${user.username}" target="_blank">Delete</a></td>
+                                <td><a href="/admin/removeuser/${user.username}" >Delete</a></td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -234,14 +234,14 @@
                     <br>
                     <br>
 
-                    <div class="container">
+                    <%--<div class="container">
 
                         <div class="sidebar">
                         </div>
                         <div class="contents">
                         </div>
 
-                    </div>
+                    </div>--%>
                 </div>
             </div>
 

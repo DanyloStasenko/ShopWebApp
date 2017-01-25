@@ -16,15 +16,15 @@
     <div id="header">
         <div id="menu">
             <ul>
-                <li><a href="<c:url value="/guide"/>">Home</a></li>
+                <li><a href="<c:url value="/home"/>">Home</a></li>
                 <li><a class="current" href="<c:url value="/products"/>">Products</a></li>
                 <li><a href="<c:url value="/admin"/>">Admin Page</a></li>
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <li class="rightblock"> <a href="<c:url value="/j_spring_security_logout"/>">Logout (${pageContext.request.userPrincipal.name})</a></li>
-                    <li class="rightblock"><a href="<c:url value="/user"/>">Go to Basket</a></li>
+                    <li class="rightblock"><a href="<c:url value="/basket"/>">Go to Basket</a></li>
                 </c:if>
                 <c:if test="${pageContext.request.userPrincipal.name == null}">
-                    <li class="rightblock"><a href="<c:url value="/user"/>">Login</a></li>
+                    <li class="rightblock"><a href="<c:url value="/login"/>">Login</a></li>
                     <li class="rightblock"><a href="<c:url value="/register"/>">Register</a></li>
                 </c:if>
             </ul>
@@ -53,10 +53,10 @@
                                 <td>${product.description}</td>
                                 <td>${product.price}</td>
                                 <c:if test="${pageContext.request.userPrincipal.name == null}">
-                                    <td><a href="<c:url value="/user"/>">Login to Buy</a></td>
+                                    <td><a href="<c:url value="/login"/>">Login to Buy</a></td>
                                 </c:if>
                                 <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                    <td><a href="<c:url value='/user/buyproduct/${product.id}/${pageContext.request.userPrincipal.name}'/>">Buy</a></td>
+                                    <td><a href="<c:url value='/buyproduct/${product.id}/${pageContext.request.userPrincipal.name}'/>">Buy</a></td>
                                 </c:if>
                             </tr>
                         </c:forEach>

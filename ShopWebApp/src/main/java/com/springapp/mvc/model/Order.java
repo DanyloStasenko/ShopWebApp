@@ -40,4 +40,13 @@ public class Order {
     public void setProductTitle(String productTitle) {
         this.productTitle = productTitle;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", productTitle='" + productTitle + '\'' +
+                '}';
+    }
 }

@@ -2,15 +2,11 @@ package com.springapp.mvc.controller;
 
 import com.springapp.mvc.model.Order;
 import com.springapp.mvc.model.Product;
-import com.springapp.mvc.model.User;
 import com.springapp.mvc.service.IOrderService;
 import com.springapp.mvc.service.IProductService;
-import com.springapp.mvc.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +16,6 @@ public class UserController {
 
     private IProductService productService;
     private IOrderService orderService;
-    private IUserService userService;
 
     @Autowired(required = true)
     @Qualifier(value = "productService")
@@ -34,45 +29,23 @@ public class UserController {
         this.orderService = orderService;
     }
 
-    @Autowired(required = true)
-    @Qualifier(value = "userService")
-    public void setUserService(IUserService userService){
-        this.userService = userService;
-    }
-
-    @RequestMapping(value = "user", method = RequestMethod.GET)
-    public String user(Model model){
-        model.addAttribute("products", this.productService.getProductsList());
-        model.addAttribute("orders", this.orderService.getOrdersList());
-        return "user";
-    }
-
-    @RequestMapping(value = "/user/buyproduct/{id}/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/buyproduct/{id}/{name}", method = RequestMethod.GET)
     public String buyProduct(@PathVariable("id") int id, @PathVariable("name") String name){
         Order order = new Order();
         Product product = productService.getProductById(id);
         order.setProductTitle(product.getTitle());
         order.setUsername(name);
         orderService.addOrder(order);
-        return "redirect:/user";
+        return "redirect:/basket";
     }
 
-    @RequestMapping(value = "/user/cancelorder/{id}/{name}/{productTitle}", method = RequestMethod.GET)
+    @RequestMapping(value = "/basket/cancelorder/{id}/{name}/{productTitle}", method = RequestMethod.GET)
     public String cancelOrder(@PathVariable("id") int id, @PathVariable("name") String name,
                               @PathVariable("productTitle") String productTitle){
         Order order = orderService.getOrderById(id);
         if (order.getUsername().equals(name) && order.getProductTitle().equals(productTitle)){
             orderService.removeOrder(id);
         }
-        return "redirect:/user";
-    }
-
-    @RequestMapping(value = "/register/add", method = RequestMethod.POST)
-    public String registerUser(@ModelAttribute("user") User user){
-        if (!user.getUsername().isEmpty() && !user.getPassword().isEmpty()){
-            user.setRole("USER");
-            this.userService.addUser(user);
-        }
-        return "redirect:/guide";
+        return "redirect:/basket";
     }
 }

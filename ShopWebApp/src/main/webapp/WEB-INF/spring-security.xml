@@ -10,7 +10,8 @@
         <intercept-url pattern="/admin**" access="ROLE_ADMIN" />
         <intercept-url pattern="/user**" access="ROLE_USER, ROLE_ADMIN" />
         <intercept-url pattern="/buyproduct**" access="ROLE_USER" />
-       <!-- <intercept-url pattern="/buyproduct**" access="isAuthenticated()"/>-->
+        <intercept-url pattern="/login**" access="ROLE_USER, ROLE_ADMIN" />
+        <intercept-url pattern="/basket**" access="ROLE_USER, ROLE_ADMIN" />
     </http>
 
     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

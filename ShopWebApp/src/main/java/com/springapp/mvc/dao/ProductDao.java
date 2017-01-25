@@ -57,7 +57,7 @@ public class ProductDao implements IProductDao {
 
         for(Product product : products)
         {
-            logger.info("Product list: " + product);
+            logger.info("Products list: " + product);
         }
         return products;
     }
