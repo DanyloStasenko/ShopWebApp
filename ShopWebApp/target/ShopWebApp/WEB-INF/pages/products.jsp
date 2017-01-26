@@ -1,14 +1,14 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <%@ page session="false" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Products</title>
-    <link href="css/adminstyle.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
@@ -41,10 +41,10 @@
                     <table class="tg">
                         <tr>
                             <th width="80">ID</th>
-                            <th width="120">Title</th>
-                            <th width="120">Description</th>
-                            <th width="120">Price</th>
-                            <th width="120">Buy</th>
+                            <th width="180">Title</th>
+                            <th width="180">Description</th>
+                            <th width="180">Price</th>
+                            <th width="180">Buy</th>
                         </tr>
                         <c:forEach items="${products}" var="product">
                             <tr>

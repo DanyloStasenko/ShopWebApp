@@ -1,6 +1,6 @@
 package com.springapp.mvc.dao;
 
-import com.springapp.mvc.model.Product;
+import com.springapp.mvc.models.Product;
 
 import java.util.List;
 

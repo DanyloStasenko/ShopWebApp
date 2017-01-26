@@ -1,12 +1,13 @@
 package com.springapp.mvc.dao;
 
-import com.springapp.mvc.model.User;
+import com.springapp.mvc.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+
 
 public class UserDao implements IUserDao {
 

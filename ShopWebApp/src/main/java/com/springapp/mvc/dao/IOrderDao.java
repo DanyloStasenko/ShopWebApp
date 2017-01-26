@@ -1,6 +1,6 @@
 package com.springapp.mvc.dao;
 
-import com.springapp.mvc.model.Order;
+import com.springapp.mvc.models.Order;
 
 import java.util.List;
 

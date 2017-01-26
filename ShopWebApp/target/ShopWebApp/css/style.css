@@ -1,16 +1,14 @@
-@import url(reset.css);
+@import url(default.css);
 
 body {
     background: url(../images/main_bg.png);
     font: 14px/1.5 Arial, Verdana, sans-serif;
-    color: #353535;
     text-align: center;
-
+    position: relative;
 }
 
-
 h1 {
-    font-size: 28px;
+    font-size: 55px;
     font-weight: bold;
     line-height: 1.4;
 }
@@ -28,49 +26,67 @@ a:hover {
     text-decoration: underline;
 }
 
-
-.wrapper {
+#wrapper {
     width: 960px;
     margin: 0 auto;
+    min-height: 100%;
+    background: #f7f3eb;
 }
 
-.header {
+#header {
     overflow: hidden;
 }
 
-
-.menu {
+#menu {
     width: 960px;
     height: 70px;
     background: #282828;
 }
 
-.menu ul {
+#menu ul {
     padding-left: 40px;
     padding-top: 25px;
     overflow: hidden;
 }
 
-.menu ul li {
+#menu ul li {
     float: left;
     font: bold 18px Arial, Verdana, sans-serif;
     color: #ffffff;
     margin-right: 70px;
 }
 
-.menu ul li a {
+#menu ul li a {
     color: #ffffff;
     display: block;
     line-height: 1;
 }
 
-.menu ul li a:hover, .menu .current {
+#menu ul li span {
+    color: #ff1600;
+}
+
+#menu ul li a:hover, #menu .current {
     text-decoration: none;
     border-bottom: 2px solid #ffffff;
 }
 
-.menu ul li span {
-    color: #ff1600;
+#menu ul li a:hover  {
+    text-decoration: none;
+    border-bottom: 2px solid #a03131;
+    color: #a03131;
+}
+
+#menu .accent {
+    float: right;
+    margin-right: 30px;
+    line-height: 1;
+}
+
+#menu .rightblock {
+    float: right;
+    margin-right: 30px;
+    line-height: 1;
 }
 
 .divider {
@@ -78,15 +94,12 @@ a:hover {
     height: 36px;
     background: url(../images/divider.png) no-repeat;
     margin: 3px auto 27px auto;
-    opacity: 0.5;
 }
 
-.content {
-     width: 960px;
-     margin: 0 auto;
-     background: #f7f3eb;
- }
-
+#content {
+    width: 960px;
+    margin: 0 auto;
+}
 
 .red-headline {
     font-size: 30px;
@@ -95,17 +108,14 @@ a:hover {
     margin-top: 28px;
 }
 
-
-
-.footer p {
-    color: #ffffff;
+.footer {
+    padding-top: 5px;
+    padding-bottom: 7px;
+    background: #282828;
 }
 
-
-.menu .rightblock {
-    float: right;
-    margin-right: 30px;
-    line-height: 1;
+.footer p {
+    color: grey;
 }
 
 .tg {
@@ -113,6 +123,7 @@ a:hover {
     border-spacing: 0;
     border-color: #ccc;
 }
+
 .tg td {
     font-family: Arial, sans-serif;
     font-size: 14px;
@@ -125,6 +136,7 @@ a:hover {
     color: #333;
     background-color: #fff;
 }
+
 .tg th {
     font-family: Arial, sans-serif;
     font-size: 14px;
@@ -138,44 +150,37 @@ a:hover {
     color: #333;
     background-color: #f0f0f0;
 }
-.left {
-    width: 580px;
-    padding: 5px;
-    padding-right: 20px;
-    float: left;
-}
-.right {
-    width: 280px;
-    padding: 5px;
-    padding-top: 60px;
-    padding-right: 20px;
-    float: left;
+
+.container {
+    width:960px;
+    margin:0 auto;
+    overflow: hidden;
 }
 
-.transparent{
-    opacity: 0.7;
+.sidebar {
+    float:left;
+    width:600px;
+    padding-left: 30px;
+}
+
+.contents {
+    position: relative;
+    float:right;
+    width:300px;
+    padding-right: 10px;
+}
+
+.sidebarcenter {
+    float:left;
+    width:600px;
+    padding-left: 230px;
 }
 
 .center {
     margin: 0 auto;
-    width: 960px;
-    padding: 10px;
-    background: #fff;
-    min-height: 1000px;
- }
-
-.table {
-    padding-left: 40px;
-    padding-bottom: 40px;
+    width: 70%;
 }
 
-.items {
-    margin: auto;
-    /*width: 960px;*/
-    padding: 10px;
-}
-
-.central{
-    margin: auto;
-    padding: 10px;
+li {
+    list-style-type: none;
 }

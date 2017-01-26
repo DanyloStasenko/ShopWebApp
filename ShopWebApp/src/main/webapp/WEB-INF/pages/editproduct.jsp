@@ -1,13 +1,36 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
 
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     <title>Edit Product</title>
-    <link href="css/adminstyle.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
+
+        html, body, div,
+        h1, h2, h3, h4, h5, h6, p,
+        a, dl, dt, dd, ol, ul, li,
+        fieldset, form, label,
+        table, tr, th, td, footer, header,
+        menu {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-color: #ccc;
+        }
+
         .tg td {
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -20,6 +43,7 @@
             color: #333;
             background-color: #fff;
         }
+
         .tg th {
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -34,7 +58,6 @@
             background-color: #f0f0f0;
         }
 
-
         body {
             font: 14px/1.5 Arial, Verdana, sans-serif;
             text-align: center;
@@ -47,6 +70,10 @@
             line-height: 1.4;
         }
 
+        li {
+            list-style-type: none;
+        }
+
         h2 {
             font-size: 24px;
         }
@@ -55,7 +82,6 @@
             color: #a03131;
             text-decoration: none;
         }
-
 
         a:hover {
             text-decoration: underline;
@@ -101,6 +127,57 @@
             color: #ff1600;
         }
 
+        #menu ul li a:hover  {
+            text-decoration: none;
+            border-bottom: 2px solid #a03131;
+            color: #a03131;
+        }
+
+        #menu .rightblock {
+            float: right;
+            margin-right: 30px;
+            line-height: 1;
+        }
+
+        #wrapper {
+            width: 960px;
+            margin: 0 auto;
+            min-height: 100%;
+            background: #f7f3eb;
+        }
+
+        #header {
+            overflow: hidden;
+        }
+
+        #menu {
+            width: 960px;
+            height: 70px;
+            background: #282828;
+        }
+
+        #menu ul {
+            padding-left: 40px;
+            padding-top: 25px;
+            overflow: hidden;
+        }
+
+        #menu ul li {
+            float: left;
+            font: bold 18px Arial, Verdana, sans-serif;
+            color: #ffffff;
+            margin-right: 70px;
+        }
+
+        #menu ul li a {
+            color: #ffffff;
+            display: block;
+            line-height: 1;
+        }
+
+        #menu ul li span {
+            color: #ff1600;
+        }
 
         #menu ul li a:hover, #menu .current {
             text-decoration: none;
@@ -112,8 +189,6 @@
             border-bottom: 2px solid #a03131;
             color: #a03131;
         }
-
-
 
         #menu .rightblock {
             float: right;
@@ -128,8 +203,6 @@
             margin-top: 28px;
         }
 
-
-
         #social li {
             text-align: left;
             height: 39px;
@@ -137,7 +210,6 @@
             padding-top: 4px;
             padding-bottom: 4px;
         }
-
 
         .footer {
             padding-top: 5px;
@@ -186,7 +258,6 @@
             width: 50%;
             padding-left: 80px;
         }
-
     </style>
 </head>
 
@@ -208,11 +279,10 @@
         <div class="container">
             <br>
             <h1>Edit Product</h1>
-            <h2 class="red-headline">This page will be refactored</h2>
             <div class="center">
                 <c:url var="addAction" value="/admin/add"/>
                 <form:form action="${addAction}" commandName="product">
-                    <table>
+                    <table class="tg">
                         <c:if test="${!empty product.title}">
                             <tr>
                                 <td>
