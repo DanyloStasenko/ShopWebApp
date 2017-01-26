@@ -89,11 +89,14 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/removeuser/{username}", method = RequestMethod.GET)
     public String removeUser(@PathVariable("username") String username){
-        userService.removeUser(username);
+        User user = userService.getUserByUsername(username);
+        if (!user.getUsername().equals("admin")){
+            userService.removeUser(username);
+        }
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/admin/removerder/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/removeorder/{id}", method = RequestMethod.GET)
     public String removeOrder(@PathVariable("id") int id){
         orderService.removeOrder(id);
         return "redirect:/admin";

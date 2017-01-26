@@ -82,6 +82,6 @@ public class ShopController {
             user.setRole("USER");
             this.userService.addUser(user);
         }
-        return "redirect:/login";
+        return "redirect:/register";
     }
 }

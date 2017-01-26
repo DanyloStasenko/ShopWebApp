@@ -221,7 +221,7 @@
                                         <td>${order.id}</td>
                                         <td>${order.username}</td>
                                         <td>${order.productTitle}</td>
-                                        <td><a href="/admin/removerder/${order.id}" >Remove</a></td>
+                                        <td><a href="/admin/removeorder/${order.id}" >Remove</a></td>
                                     </tr>
                                 </c:forEach>
                             </table>
