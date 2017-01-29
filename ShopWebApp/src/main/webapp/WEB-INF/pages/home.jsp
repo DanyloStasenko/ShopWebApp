@@ -42,9 +42,9 @@
                         <c:if test="${!empty users}">
                             <table class="tg">
                                 <tr>
-                                    <th width="185">Username</th>
-                                    <th width="185">Password</th>
-                                    <th width="185">Role</th>
+                                    <th width="200">Username</th>
+                                    <th width="200">Password</th>
+                                    <th width="200">Role</th>
                                 </tr>
                                 <c:forEach items="${users}" var="user">
                                     <tr>

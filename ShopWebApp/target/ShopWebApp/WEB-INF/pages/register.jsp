@@ -25,18 +25,16 @@
         </div>
     </div>
 
-    <div class="content">
+    <div id="content">
         <div class="container">
-            <br>
-            <div class="divider"></div>
-            <h2 class="red-headline">Please use these logins:</h2>
-            <div class="center">
+            <div class="sidebar">
+                <h2 class="red-headline">Please, use these logins:</h2>
                 <c:if test="${!empty users}">
                     <table class="tg">
                         <tr>
-                            <th width="120">Username</th>
-                            <th width="120">Password</th>
-                            <th width="120">Role</th>
+                            <th width="200">Username</th>
+                            <th width="200">Password</th>
+                            <th width="200">Role</th>
                         </tr>
                         <c:forEach items="${users}" var="user">
                             <tr>
@@ -48,12 +46,15 @@
                     </table>
                 </c:if>
                 <br>
-                <h2 class="red-headline">Or register new user:</h2>
+            </div>
+
+            <div class="contents">
+                <h2 class="red-headline">Or add user:</h2>
                 <c:url var="addAction" value="/register/adduser"/>
                 <form:form action="${addAction}" commandName="user">
                     <table class="tg">
                         <tr>
-                            <td>
+                            <td width ="100">
                                 <form:label path="username">
                                     <spring:message text="Username "/>
                                 </form:label>
@@ -81,11 +82,13 @@
                             </td>
                         </tr>
                     </table>
-                    </form:form>
+                </form:form>
                 <br>
             </div>
         </div>
     </div>
+
+
 
     <div class="footer">
         <c:if test="${pageContext.request.userPrincipal.name != null}">

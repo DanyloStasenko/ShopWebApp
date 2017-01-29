@@ -45,9 +45,9 @@
                             <br>
                             <table class="tg">
                                 <tr>
-                                    <th width="80">ID</th>
-                                    <th width="200">Title</th>
-                                    <th width="200">Cancel</th>
+                                    <th width="140">ID</th>
+                                    <th width="260">Title</th>
+                                    <th width="260">Cancel</th>
                                 </tr>
                                 <c:forEach items="${orders}" var="order">
                                     <c:if test="${order.username == pageContext.request.userPrincipal.name}">

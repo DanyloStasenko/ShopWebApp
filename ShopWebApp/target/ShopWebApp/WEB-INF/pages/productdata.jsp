@@ -199,14 +199,12 @@
 
         .center {
             margin: 0 auto;
-            width: 50%;
-            padding-left: 80px;
+            width: 70%;
         }
 
         li {
             list-style-type: none;
         }
-
     </style>
 </head>
 
@@ -219,7 +217,7 @@
                     <li><a href="<c:url value="/products"/>">Products</a></li>
                     <li><a href="<c:url value="/admin"/>">Admin Page</a></li>
                     <c:if test="${pageContext.request.userPrincipal.name != null}">
-                        <li class="rightblock"> <a href="<c:url value="/j_spring_security_logout"/>">Logout (${pageContext.request.userPrincipal.name})</a></li>
+                        <li class="rightblock"><a href="<c:url value="/j_spring_security_logout"/>">Logout (${pageContext.request.userPrincipal.name})</a></li>
                         <li class="rightblock"><a href="<c:url value="/basket"/>">Go to Basket</a></li>
                     </c:if>
                     <c:if test="${pageContext.request.userPrincipal.name == null}">
@@ -239,10 +237,10 @@
                     <c:if test="${!empty product}">
                         <table class="tg">
                             <tr>
-                                <th width="80">ID</th>
-                                <th width="120">Title</th>
-                                <th width="120">Description</th>
-                                <th width="120">Price</th>
+                                <th width="150">ID</th>
+                                <th width="150">Title</th>
+                                <th width="150">Description</th>
+                                <th width="150">Price</th>
                             </tr>
                             <tr>
                                 <td>${product.id}</td>
