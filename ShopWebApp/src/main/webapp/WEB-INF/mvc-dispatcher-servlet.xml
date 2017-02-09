@@ -30,11 +30,9 @@
     <!-- Hibernate 4 SessionFactory Bean definition -->
     <bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="annotatedClasses">
+        <property name="packagesToScan">
             <list>
-                <value>com.springapp.mvc.models.Product</value>
-                <value>com.springapp.mvc.models.User</value>
-                <value>com.springapp.mvc.models.Order</value>
+                <value>com.springapp.mvc.models</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -49,29 +47,6 @@
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
 
-    <!--ProductDao and ProductService beans-->
-    <bean id="productDao" class="com.springapp.mvc.dao.ProductDao">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="productService" class="com.springapp.mvc.services.ProductService">
-        <property name="productDao" ref="productDao"/>
-    </bean>
-
-    <!--UserDao and UserService beans-->
-    <bean id="userDao" class="com.springapp.mvc.dao.UserDao">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="userService" class="com.springapp.mvc.services.UserService">
-        <property name="userDao" ref="userDao"/>
-    </bean>
-
-    <!--OrderDao and OrderService beans-->
-    <bean id="orderDao" class="com.springapp.mvc.dao.OrderDao">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="orderService" class="com.springapp.mvc.services.OrderService">
-        <property name="orderDao" ref="orderDao"/>
-    </bean>
-
+    <import resource="spring-security.xml"/>
 
 </beans>

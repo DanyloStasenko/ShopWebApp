@@ -6,13 +6,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 
 @Entity
 @Table(name="users")
-public class User implements UserDetails{
+public class User extends Model implements UserDetails{
 
     @Id
     @Column(name="username", length=25)
@@ -59,20 +58,10 @@ public class User implements UserDetails{
     }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> result = new ArrayList();
-        result.add(new SimpleGrantedAuthority(role.toString()));
-
-        return result;
+    public List<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + getRole()));
+        return authorities;
     }
 
     @Override
@@ -93,5 +82,14 @@ public class User implements UserDetails{
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

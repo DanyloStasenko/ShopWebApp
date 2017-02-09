@@ -43,10 +43,10 @@
                         <c:forEach items="${products}" var="product">
                             <tr>
                                 <td>${product.id}</td>
-                                <td><a href="/productdata/${product.id}" >${product.title}</a></td>
+                                <td><a href="/productdata${product.id}" >${product.title}</a></td>
                                 <td>${product.description}</td>
                                 <td>${product.price}</td>
-                                <td><a href="/admin/editproduct/${product.id}" >Edit</a></td>
+                                <td><a href="/admin/editproduct${product.id}" >Edit</a></td>
                                 <td><a href="<c:url value='/admin/remove/${product.id}'/>">Delete</a></td>
                             </tr>
                         </c:forEach>

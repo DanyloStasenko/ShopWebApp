@@ -8,37 +8,28 @@ import com.springapp.mvc.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+@Transactional
 @Controller
 public class AdminController {
 
-    private IProductService productService;
-    private IUserService userService;
-    private IOrderService orderService;
-
     @Autowired(required = true)
     @Qualifier(value = "productService")
-    public void setProductService(IProductService productService){
-        this.productService = productService;
-    }
+    private IProductService productService;
 
     @Autowired(required = true)
     @Qualifier(value = "userService")
-    public void setUserService(IUserService userService){
-        this.userService = userService;
-    }
+    private IUserService userService;
 
     @Autowired(required = true)
     @Qualifier(value = "orderService")
-    public void setOrderService(IOrderService orderService){
-        this.orderService = orderService;
-    }
+    private IOrderService orderService;
 
     @RequestMapping(value = "admin", method = RequestMethod.GET)
     public String admin(Model model){
@@ -72,9 +63,10 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @RequestMapping("/admin/editproduct/{id}")
+    @RequestMapping("/admin/editproduct{id}")
     public String editProduct(@PathVariable("id") int id, Model model){
         model.addAttribute("product", this.productService.getProductById(id));
+        System.out.println(this.productService.getProductById(id));
         return "editproduct";
     }
 

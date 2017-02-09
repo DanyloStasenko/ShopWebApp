@@ -7,28 +7,22 @@ import com.springapp.mvc.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+@Transactional
 @Controller
 public class UserController {
 
-    private IProductService productService;
-    private IOrderService orderService;
-
     @Autowired(required = true)
     @Qualifier(value = "productService")
-    public void setProductService(IProductService productService){
-        this.productService = productService;
-    }
+    private IProductService productService;
 
     @Autowired(required = true)
     @Qualifier(value = "orderService")
-    public void setOrderService(IOrderService orderService){
-        this.orderService = orderService;
-    }
+    private IOrderService orderService;
 
     @RequestMapping(value = "/buyproduct/{id}/{name}", method = RequestMethod.GET)
     public String buyProduct(@PathVariable("id") int id, @PathVariable("name") String name){

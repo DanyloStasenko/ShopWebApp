@@ -49,7 +49,7 @@
                         <c:forEach items="${products}" var="product">
                             <tr>
                                 <td>${product.id}</td>
-                                <td><a href="/productdata/${product.id}" >${product.title}</a></td>
+                                <td><a href="/productdata${product.id}" >${product.title}</a></td>
                                 <td>${product.description}</td>
                                 <td>${product.price}</td>
                                 <c:if test="${pageContext.request.userPrincipal.name == null}">

@@ -88,8 +88,6 @@
         </div>
     </div>
 
-
-
     <div class="footer">
         <c:if test="${pageContext.request.userPrincipal.name != null}">
             <p> Welcome : ${pageContext.request.userPrincipal.name} | <a href="<c:url value="/j_spring_security_logout"/>">Logout</a></p>

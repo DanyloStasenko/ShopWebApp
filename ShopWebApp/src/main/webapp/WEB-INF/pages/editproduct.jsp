@@ -196,13 +196,6 @@
             line-height: 1;
         }
 
-        .red-headline {
-            font-size: 30px;
-            font-weight: bold;
-            color: #a03131;
-            margin-top: 28px;
-        }
-
         #social li {
             text-align: left;
             height: 39px;
@@ -233,6 +226,7 @@
             color: #333;
             background-color: #fff;
         }
+
         .tg th {
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -351,4 +345,3 @@
 </div>
 </body>
 </html>
-

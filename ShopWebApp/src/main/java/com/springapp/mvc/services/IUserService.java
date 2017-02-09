@@ -1,6 +1,7 @@
 package com.springapp.mvc.services;
 
 import com.springapp.mvc.models.User;
+
 import java.util.List;
 
 public interface IUserService {

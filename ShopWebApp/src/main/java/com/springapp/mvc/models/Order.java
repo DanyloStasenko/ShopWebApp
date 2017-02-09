@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order extends Model {
 
     @Id
     @Column(name = "id")
