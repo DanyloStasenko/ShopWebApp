@@ -9,10 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-
     @Autowired(required = true)
     @Qualifier(value = "userDao")
     public UserDao userDao;
@@ -21,6 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDao.getUserByUsername(username);
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                true, true, true, true, user.getAuthorities());
+                    user.isEnabled(), user.isAccountNonExpired(), user.isCredentialsNonExpired(),
+                    user.isAccountNonLocked(), user.getAuthorities());
     }
 }

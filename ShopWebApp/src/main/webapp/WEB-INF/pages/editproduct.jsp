@@ -9,6 +9,8 @@
     <head>
     <title>Edit Product</title>
     <link href="css/style.css" type="text/css" rel="stylesheet" />
+
+    <%-- TODO: BUG: Cant link CSS, so it should be defined in this file --%>
     <style type="text/css">
 
         html, body, div,

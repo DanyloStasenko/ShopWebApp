@@ -7,14 +7,12 @@ import com.springapp.mvc.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Transactional
 @Controller
 public class ShopController {
 
@@ -29,6 +27,7 @@ public class ShopController {
     @Autowired(required = true)
     @Qualifier(value = "orderService")
     private IOrderService orderService;
+
 
     @RequestMapping(value = "products", method = RequestMethod.GET)
     public String listProducts(Model model){

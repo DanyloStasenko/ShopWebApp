@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-public class GenericDao<T extends Model> implements IGenericDao<T>{
 
+public class GenericDao<T extends Model> implements IGenericDao<T>{
     private static final Logger logger = LoggerFactory.getLogger(OrderDao.class);
 
     @Autowired
@@ -69,11 +69,6 @@ public class GenericDao<T extends Model> implements IGenericDao<T>{
         Criteria criteria =  getSession().createCriteria(this.clazz);
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
-
-        /*Session session = this.sessionFactory.getCurrentSession();
-        List<T> models = session.createQuery("from Model").list();
-        return models;*/
-        // I get Exception with this ^ code so I used Criteria Query.
     }
 
     public Session getSession(){

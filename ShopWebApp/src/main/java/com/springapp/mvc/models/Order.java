@@ -2,7 +2,6 @@ package com.springapp.mvc.models;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "orders")
 public class Order extends Model {

@@ -64,6 +64,8 @@
                             </table>
                         </c:if>
                     </c:if>
+                    <br>
+                    <p>Sorry for these redirects from 'Products page' when You are buying something :)</p>
                 </div>
                 <br>
                 <br>

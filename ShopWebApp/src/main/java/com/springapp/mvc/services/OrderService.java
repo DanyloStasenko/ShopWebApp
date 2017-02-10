@@ -8,39 +8,34 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
 @Component
+@Transactional
 public class OrderService implements IOrderService {
 
     @Autowired
     private IOrderDao orderDao;
 
     @Override
-    @Transactional
     public void addOrder(Order order) {
         orderDao.add(order);
     }
 
     @Override
-    @Transactional
     public void updateOrder(Order order) {
         orderDao.update(order);
     }
 
     @Override
-    @Transactional
     public void removeOrder(int id) {
         orderDao.remove(id);
     }
 
     @Override
-    @Transactional
     public Order getOrderById(int id) {
         return orderDao.getById(id);
     }
 
     @Override
-    @Transactional
     public List<Order> getOrdersList() {
         return orderDao.getAll();
     }

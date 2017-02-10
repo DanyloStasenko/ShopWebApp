@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository("userDao")
 public class UserDao extends GenericDao<User> implements IUserDao {
-
     private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
 
     @Override
