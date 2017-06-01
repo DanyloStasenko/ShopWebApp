@@ -9,6 +9,16 @@
 <head>
     <title>Products</title>
     <link href="css/style.css" type="text/css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <%--this code will execute on every 5s so we are updating data with an AJAX request--%>
+    <script type="text/javascript">
+        window.setInterval(function() {
+            $('#wrapper').load('/products.html #wrapper');
+        }, 5000);
+    </script>
+
 </head>
 
 <body>

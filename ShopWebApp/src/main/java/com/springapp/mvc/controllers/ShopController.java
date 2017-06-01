@@ -29,6 +29,16 @@ public class ShopController {
     private IOrderService orderService;
 
 
+
+
+    @RequestMapping(value = "/target", method = RequestMethod.GET)
+    public String target(Model model){
+        model.addAttribute("products", this.productService.getProductsList());
+        return "target";
+    }
+
+
+
     @RequestMapping(value = "products", method = RequestMethod.GET)
     public String listProducts(Model model){
         model.addAttribute("products", this.productService.getProductsList());
