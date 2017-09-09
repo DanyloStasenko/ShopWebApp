@@ -15,29 +15,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ShopController {
+    private final IProductService productService;
+    private final IUserService userService;
+    private final IOrderService orderService;
 
     @Autowired(required = true)
-    @Qualifier(value = "productService")
-    private IProductService productService;
-
-    @Autowired(required = true)
-    @Qualifier(value = "userService")
-    private IUserService userService;
-
-    @Autowired(required = true)
-    @Qualifier(value = "orderService")
-    private IOrderService orderService;
-
-
-
+    public ShopController(@Qualifier(value = "productService") IProductService productService,
+                          @Qualifier(value = "userService") IUserService userService,
+                          @Qualifier(value = "orderService") IOrderService orderService) {
+        this.productService = productService;
+        this.userService = userService;
+        this.orderService = orderService;
+    }
 
     @RequestMapping(value = "/target", method = RequestMethod.GET)
     public String target(Model model){
         model.addAttribute("products", this.productService.getProductsList());
         return "target";
     }
-
-
 
     @RequestMapping(value = "products", method = RequestMethod.GET)
     public String listProducts(Model model){

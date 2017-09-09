@@ -2,9 +2,12 @@ package com.springapp.mvc.dao;
 
 import com.springapp.mvc.models.Order;
 
-import org.springframework.stereotype.Component;
+import java.util.List;
 
-@Component
-public class OrderDao extends GenericDao<Order> implements IOrderDao{
-
+public interface OrderDao {
+    public void add(Order order);
+    public void update(Order order);
+    public void remove(int id);
+    public Order getById(int id);
+    public List<Order> getAll();
 }

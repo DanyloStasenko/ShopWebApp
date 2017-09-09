@@ -1,6 +1,6 @@
 package com.springapp.mvc.services;
 
-import com.springapp.mvc.dao.UserDao;
+import com.springapp.mvc.dao.impl.UserDaoImpl;
 import com.springapp.mvc.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired(required = true)
     @Qualifier(value = "userDao")
-    public UserDao userDao;
+    public UserDaoImpl userDao;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -17,23 +17,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AdminController {
 
-    @Autowired(required = true)
-    @Qualifier(value = "productService")
-    private IProductService productService;
+    private final IProductService productService;
+    private final IUserService userService;
+    private final IOrderService orderService;
 
     @Autowired(required = true)
-    @Qualifier(value = "userService")
-    private IUserService userService;
-
-    @Autowired(required = true)
-    @Qualifier(value = "orderService")
-    private IOrderService orderService;
-
-
-
-
-
-
+    public AdminController(@Qualifier(value = "productService") IProductService productService,
+                           @Qualifier(value = "userService") IUserService userService,
+                           @Qualifier(value = "orderService") IOrderService orderService) {
+        this.productService = productService;
+        this.userService = userService;
+        this.orderService = orderService;
+    }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model){

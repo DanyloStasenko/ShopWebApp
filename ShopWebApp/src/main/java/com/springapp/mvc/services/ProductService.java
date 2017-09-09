@@ -1,6 +1,6 @@
 package com.springapp.mvc.services;
 
-import com.springapp.mvc.dao.IProductDao;
+import com.springapp.mvc.dao.ProductDao;
 import com.springapp.mvc.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import java.util.List;
 public class ProductService implements IProductService {
 
     @Autowired
-    private IProductDao productDao;
+    private ProductDao productDao;
 
     @Override
     public void addProduct(Product product) {

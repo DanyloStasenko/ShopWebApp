@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class UserController {
+    private final IProductService productService;
+    private final IOrderService orderService;
 
     @Autowired(required = true)
-    @Qualifier(value = "productService")
-    private IProductService productService;
-
-    @Autowired(required = true)
-    @Qualifier(value = "orderService")
-    private IOrderService orderService;
-
+    public UserController(@Qualifier(value = "productService") IProductService productService,
+                          @Qualifier(value = "orderService") IOrderService orderService) {
+        this.productService = productService;
+        this.orderService = orderService;
+    }
 
     @RequestMapping(value = "/buyproduct/{id}/{name}", method = RequestMethod.GET)
     public String buyProduct(@PathVariable("id") int id, @PathVariable("name") String name){
