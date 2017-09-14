@@ -1,1 +1,9 @@
 *class
+/target/
+src/main/java/com/springapp/mvc/helpers/
+target/ShopWebApp/WEB-INF/classes/com/springapp/mvc/dao/impl/
+target/ShopWebApp/WEB-INF/classes/com/springapp/mvc/helpers/
+target/classes/com/springapp/mvc/dao/impl/
+target/classes/com/springapp/mvc/helpers/
+target/generated-sources/
+target/generated-test-sources/

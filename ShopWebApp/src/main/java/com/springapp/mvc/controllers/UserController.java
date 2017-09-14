@@ -1,5 +1,6 @@
 package com.springapp.mvc.controllers;
 
+import com.springapp.mvc.helpers.AuthHelper;
 import com.springapp.mvc.models.Order;
 import com.springapp.mvc.models.Product;
 import com.springapp.mvc.services.IOrderService;
@@ -15,12 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserController {
     private final IProductService productService;
     private final IOrderService orderService;
+    private final AuthHelper authHelper;
 
     @Autowired(required = true)
     public UserController(@Qualifier(value = "productService") IProductService productService,
-                          @Qualifier(value = "orderService") IOrderService orderService) {
+                          @Qualifier(value = "orderService") IOrderService orderService,
+                          @Qualifier(value = "authHelper") AuthHelper authHelper) {
         this.productService = productService;
         this.orderService = orderService;
+        this.authHelper = authHelper;
     }
 
     @RequestMapping(value = "/buyproduct/{id}/{name}", method = RequestMethod.GET)
@@ -33,11 +37,10 @@ public class UserController {
         return "redirect:/basket";
     }
 
-    @RequestMapping(value = "/basket/cancelorder/{id}/{name}/{productTitle}", method = RequestMethod.GET)
-    public String cancelOrder(@PathVariable("id") int id, @PathVariable("name") String name,
-                              @PathVariable("productTitle") String productTitle){
+    @RequestMapping(value = "/basket/cancelorder/{id}", method = RequestMethod.GET)
+    public String cancelOrder(@PathVariable("id") int id){
         Order order = orderService.getOrderById(id);
-        if (order.getUsername().equals(name) && order.getProductTitle().equals(productTitle)){
+        if (order.getUsername().equals(authHelper.getLoggedInUserName())){
             orderService.removeOrder(id);
         }
         return "redirect:/basket";

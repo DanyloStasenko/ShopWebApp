@@ -54,10 +54,7 @@
                                         <tr>
                                             <td>${order.id}</td>
                                             <td>${order.productTitle}</td>
-                                            <%-- Order may be cancelled only if 3 parameters will match: order ID, username, productTitle--%>
-                                            <td><a href="<c:url value='/basket/cancelorder/${order.id}
-                                        /${pageContext.request.userPrincipal.name}
-                                        /${order.productTitle}'/>">Cancel</a></td>
+                                            <td><a href="<c:url value='/basket/cancelorder/${order.id}'/>">Cancel</a></td>
                                         </tr>
                                     </c:if>
                                 </c:forEach>
