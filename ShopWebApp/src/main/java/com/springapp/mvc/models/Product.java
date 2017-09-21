@@ -11,6 +11,8 @@ public class Product extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
+    //asd
     @Column(name = "price")
     private int price;
 
